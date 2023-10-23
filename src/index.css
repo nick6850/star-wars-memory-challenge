@@ -5,7 +5,9 @@
 }
 
 body {
-  background-color: black;
+  background-image: url('main-background.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   display: flex;
   justify-content: center;
@@ -72,40 +74,91 @@ body {
   right: 0;
   margin: auto;
   font-size: 60px;
-  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 50px;
+  border: rgba(255, 255, 255, 0.841) 5px solid;
+  background-image: url(night-sky.avif); 
 }
 
-
-#gameover {
-  border: white 5px solid;
-  background-color: #7F252F;
-}
 
 #gameover > button, #victory > button {
   margin-top: 5px;
-  font-size: 30px;
+  font-size: 40px;
+  border: none;
+  text-shadow: 0 0 1px yellow;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(255, 255, 255);
+}
+
+#victory > button  {
+  color: goldenrod;
+}
+
+#victory > button:hover, #gameover> button:hover {
+  text-shadow: 0 0 10px rgb(255, 222, 54);
 }
 
 #gameover > img, #victory > img {
   border-radius: 10px;
   object-fit:cover;
-  width: 450px;
+  width: 600px;
   height: 300px;
   margin-bottom: 50px;
-
 }
 
 #victory {
-  border: black 5px solid;
-  background-color: #4D1D89;
+  color: white;
+}
+
+#gameover {
+  color: rgb(186, 22, 22);
+}
+
+#victory > p, #gameover > p {
+  font-family: 'Star Wars', sans-serif;  
+  font-size: 50px;
 }
 
 #cardback {
   border-radius: 10px;
-  border: 3px white solid;
+  border: 3px #ffffff solid;
+}
+
+#volumeBtn {
+  background-color: white;
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  display: flex;
+  align-items: center;
+}
+
+#volumeBtn > img {
+  width: 60px;
+  background-color: none;
+}
+
+.loading {
+  margin: 0 auto;
+  position: relative;
+}
+
+.loading > p {
+  font-size: 35px;
+  text-align: center;
+  font-family: 'Star Wars', sans-serif;  
+  text-shadow: 0 0 1px black;
+  margin-bottom: 15px;
+}
+
+.loading > img {
+  border: none;
+  border-radius: 15px;
 }

@@ -3,6 +3,7 @@ import charactersData from '../characters.json'
 import { shuffle } from 'lodash'
 import cardBackImg from '/card-back.jpg'
 import cardFlip from '/card-flip.mp3'
+import loadingGif from '/loading.gif'
 
 export default function Cards({ score, setScore, gameOver, setGameOver, newGame, victory, setVictory }) {
   const [characters, setCharacters] = useState([])
@@ -33,17 +34,27 @@ export default function Cards({ score, setScore, gameOver, setGameOver, newGame,
   }, [newGame]);
 
 
-  const cardBack = <div className='card' id='cardback'><img src={cardBackImg} alt="" /></div>
-  const cardBacks = []
-  for (let index = 0; index < 5; index++) {
-    cardBacks.push(cardBack)
+  function generateCardBacks(){
+    const cardBack = <div className='card' id='cardback'><img src={cardBackImg} alt="" /></div>
+    const cardBacks = []
+    for (let index = 0; index < 5; index++) {
+      cardBacks.push(cardBack)
+    }
+    cardBacks.push(<audio src={cardFlip} volume={0.3} autoPlay/>)
+    return cardBacks
   }
-  cardBacks.push(<audio src={cardFlip} volume={0.3} autoPlay/>)
 
+  function generateLoading(){
+    return <div className="loading">
+      <p>Loading ...</p>
+      <img src={loadingGif} alt="" />
+    </div>
+  }
 
 
   useEffect(() => {
-    score != 0 && setCharEl(cardBacks)
+    score != 0 && setCharEl(generateCardBacks())
+    score === 0 && setCharEl(generateLoading)
     setTimeout(() => {
       setCharEl(
         shuffle(characters).slice(0, 5).map(char => (
@@ -53,7 +64,7 @@ export default function Cards({ score, setScore, gameOver, setGameOver, newGame,
           </div>
         ))
       )
-    }, 1000)
+    }, score === 0 ? 3000 : 1000)
   }, [characters, score, newGame])
 
   function toggleSelected(id) {
@@ -84,7 +95,7 @@ export default function Cards({ score, setScore, gameOver, setGameOver, newGame,
   return (
     <>
       <div className='cards'>
-        {victory | gameOver ? cardBacks : charEl}
+        {victory | gameOver ? generateCardBacks() : charEl}
       </div>
     </>
   )
