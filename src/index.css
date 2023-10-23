@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  box-sizing: border-box;     
+  font-family: 'Roboto', sans-serif;                                     
+}
+
+body {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+#game-title {
+  font-family: 'Star Wars', sans-serif;   
+  color: goldenrod;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.cards {
+  margin: 50px 0;
+  width: 80vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  position: relative;
+  
+}
+
+.card {
+  color: white;
+  padding: 5px;
+  border: 2px white solid;
+  text-align: center;
+  height: min-content;
+  font-size: 28px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  border: gold 2px solid;
+  cursor: pointer;
+}
+
+.card > img {
+  width: 100%;
+}
+
+#score {
+  text-align: center;
+  font-size: 40px;
+}
+
+.bold {
+  font-weight: bold;
+  color: goldenrod;
+}
+
+
+#gameover, #victory {
+  border-radius: 15px;
+  width: 750px;
+  height: fit-content;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 60px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+
+#gameover {
+  border: white 5px solid;
+  background-color: #7F252F;
+}
+
+#gameover > button, #victory > button {
+  margin-top: 5px;
+  font-size: 30px;
+}
+
+#gameover > img, #victory > img {
+  border-radius: 10px;
+  object-fit:cover;
+  width: 450px;
+  height: 300px;
+  margin-bottom: 50px;
+
+}
+
+#victory {
+  border: black 5px solid;
+  background-color: #4D1D89;
+}
+
+#cardback {
+  border-radius: 10px;
+  border: 3px white solid;
+}
